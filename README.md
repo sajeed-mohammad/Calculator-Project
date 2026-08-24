@@ -6,6 +6,13 @@ A modern and responsive calculator web application built using **HTML, CSS, and 
 
 CalcX provides a clean and interactive user interface with essential arithmetic operations and additional features such as calculation history, keyboard support, theme switching, and copy-to-clipboard functionality.
 
+---
+## Live Demo
+
+https://sajeed-mohammad.github.io/Calculator-Project-Task-2-CodeAlpha/
+
+---
+
 ##  Features
 
 -  Addition
@@ -44,3 +51,5 @@ CalcX/
 ```
 ## Author
 **Mohammad Sajeed**
+
+This project was completed as part of a CodeAlpha Front-End Development — Internship
