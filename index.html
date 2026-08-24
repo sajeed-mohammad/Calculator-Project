@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modern responsive calculator built with HTML, CSS and JavaScript">
+    <title>CalcX - Modern Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <!-- Calculator -->
+        <section class="calculator">
+
+            <!-- Header -->
+            <header class="header">
+                <div>
+                    <h1>Calc<span>X</span></h1>
+                    <p>Smart • Simple • Fast</p>
+                </div>
+
+                <button id="themeBtn" class="icon-btn" title="Toggle Theme">
+                    ☀
+                </button>
+            </header>
+
+            <!-- Display -->
+            <section class="display">
+
+                <div class="expression" id="expression">
+                    Ready
+                </div>
+
+                <div class="result" id="result">
+                    0
+                </div>
+
+                <button id="copyBtn" class="copy-btn" title="Copy Result">
+                    ⧉
+                </button>
+
+            </section>
+
+            <!-- Keyboard -->
+            <section class="keyboard">
+
+                <button class="special danger" data-action="clear">
+                    AC
+                </button>
+
+                <button class="special" data-action="delete">
+                    DEL
+                </button>
+
+                <button class="operator" data-operator="%">
+                    %
+                </button>
+
+                <button class="operator" data-operator="/">
+                    ÷
+                </button>
+
+                <button data-number="7">7</button>
+                <button data-number="8">8</button>
+                <button data-number="9">9</button>
+
+                <button class="operator" data-operator="*">
+                    ×
+                </button>
+
+                <button data-number="4">4</button>
+                <button data-number="5">5</button>
+                <button data-number="6">6</button>
+
+                <button class="operator" data-operator="-">
+                    −
+                </button>
+
+                <button data-number="1">1</button>
+                <button data-number="2">2</button>
+                <button data-number="3">3</button>
+
+                <button class="operator" data-operator="+">
+                    +
+                </button>
+
+                <button class="zero" data-number="0">
+                    0
+                </button>
+
+                <button data-number=".">
+                    .
+                </button>
+
+                <button class="equals" data-action="calculate">
+                    =
+                </button>
+
+            </section>
+
+            <!-- Keyboard Hint -->
+            <div class="keyboard-hint">
+                <span>⌨</span>
+                
+            </div>
+
+        </section>
+
+
+        <!-- History -->
+        <aside class="history-panel">
+
+            <div class="history-header">
+                <div>
+                    <h2>History</h2>
+                    <p>Your recent calculations</p>
+                </div>
+
+                <button id="clearHistory" class="clear-history">
+                    Clear
+                </button>
+            </div>
+
+            <div id="historyList" class="history-list">
+
+                <div class="empty-history">
+                    <div>🧮</div>
+                    <p>No calculations yet</p>
+                    <span>Your results will appear here</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+    <div id="toast" class="toast">
+        Result copied!
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

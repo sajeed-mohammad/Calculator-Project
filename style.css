@@ -1,0 +1,656 @@
+/* ================================
+   RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   VARIABLES
+================================ */
+
+:root {
+    --bg: #0b1020;
+    --card: rgba(20, 27, 48, 0.88);
+    --display: #080c18;
+    --button: #171f35;
+    --button-hover: #222c47;
+    --text: #ffffff;
+    --muted: #8f9bb3;
+    --primary: #6c63ff;
+    --primary-hover: #7b73ff;
+    --operator: #25204b;
+    --danger: #49212b;
+    --danger-hover: #602734;
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
+body.light {
+    --bg: #eef2ff;
+    --card: rgba(255, 255, 255, 0.9);
+    --display: #f5f7ff;
+    --button: #ffffff;
+    --button-hover: #e9edff;
+    --text: #171a2b;
+    --muted: #697189;
+    --operator: #e9e5ff;
+    --danger: #ffe5ea;
+    --danger-hover: #ffd4dc;
+    --border: rgba(0, 0, 0, 0.08);
+    --shadow: rgba(50, 60, 100, 0.2);
+}
+
+
+/* ================================
+   BODY
+================================ */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(108, 99, 255, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(0, 210, 255, 0.12),
+            transparent 30%
+        ),
+        var(--bg);
+
+    padding: 30px;
+
+    transition: background 0.3s ease;
+}
+
+
+/* ================================
+   MAIN APP
+================================ */
+
+.app {
+    width: 100%;
+    max-width: 950px;
+
+    display: grid;
+    grid-template-columns: 430px 1fr;
+    gap: 24px;
+}
+
+
+/* ================================
+   CALCULATOR
+================================ */
+
+.calculator,
+.history-panel {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 70px var(--shadow);
+
+    backdrop-filter: blur(20px);
+}
+
+
+/* ================================
+   CALCULATOR
+================================ */
+
+.calculator {
+    padding: 25px;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.header h1 span {
+    color: var(--primary);
+}
+
+.header p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+
+/* ================================
+   ICON BUTTON
+================================ */
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: var(--button);
+
+    color: var(--text);
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    background: var(--button-hover);
+    transform: rotate(15deg);
+}
+
+
+/* ================================
+   DISPLAY
+================================ */
+
+.display {
+    position: relative;
+
+    min-height: 145px;
+
+    padding: 22px;
+
+    border-radius: 20px;
+
+    background: var(--display);
+
+    border: 1px solid var(--border);
+
+    margin-bottom: 18px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    overflow: hidden;
+}
+
+.expression {
+    min-height: 25px;
+
+    color: var(--muted);
+
+    text-align: right;
+
+    font-size: 15px;
+
+    margin-bottom: 8px;
+
+    overflow-x: auto;
+}
+
+.result {
+    text-align: right;
+
+    font-size: 44px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+    word-break: break-all;
+
+    transition: 0.2s;
+}
+
+.copy-btn {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    opacity: 0.7;
+
+    transition: 0.2s;
+}
+
+.copy-btn:hover {
+    color: var(--primary);
+    opacity: 1;
+}
+
+
+/* ================================
+   KEYBOARD
+================================ */
+
+.keyboard {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 11px;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+.keyboard button {
+    height: 64px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    background: var(--button);
+
+    color: var(--text);
+
+    font-size: 19px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.12s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.keyboard button:hover {
+    background: var(--button-hover);
+
+    transform: translateY(-2px);
+}
+
+.keyboard button:active {
+    transform: scale(0.94);
+}
+
+
+/* ================================
+   SPECIAL BUTTONS
+================================ */
+
+.special {
+    color: var(--muted) !important;
+}
+
+.danger {
+    background: var(--danger) !important;
+}
+
+.danger:hover {
+    background: var(--danger-hover) !important;
+}
+
+
+/* ================================
+   OPERATORS
+================================ */
+
+.operator {
+    background: var(--operator) !important;
+
+    color: var(--primary) !important;
+
+    font-size: 22px !important;
+}
+
+.operator:hover {
+    box-shadow: 0 5px 20px rgba(108, 99, 255, 0.18);
+}
+
+
+/* ================================
+   EQUAL
+================================ */
+
+.equals {
+    background: var(--primary) !important;
+
+    color: white !important;
+
+    font-size: 25px !important;
+
+    box-shadow:
+        0 8px 25px rgba(108, 99, 255, 0.3);
+}
+
+.equals:hover {
+    background: var(--primary-hover) !important;
+}
+
+
+/* ================================
+   ZERO
+================================ */
+
+.zero {
+    grid-column: span 2;
+}
+
+
+/* ================================
+   KEYBOARD HINT
+================================ */
+
+.keyboard-hint {
+    text-align: center;
+
+    margin-top: 18px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.keyboard-hint span {
+    margin-right: 5px;
+}
+
+
+/* ================================
+   HISTORY PANEL
+================================ */
+
+.history-panel {
+    padding: 25px;
+
+    min-height: 600px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.history-header h2 {
+    font-size: 22px;
+}
+
+.history-header p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 4px;
+}
+
+
+/* ================================
+   CLEAR HISTORY
+================================ */
+
+.clear-history {
+    border: none;
+
+    background: transparent;
+
+    color: var(--primary);
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.clear-history:hover {
+    text-decoration: underline;
+}
+
+
+/* ================================
+   HISTORY LIST
+================================ */
+
+.history-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    max-height: 510px;
+
+    overflow-y: auto;
+
+    padding-right: 4px;
+}
+
+
+/* ================================
+   HISTORY ITEM
+================================ */
+
+.history-item {
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background: var(--button);
+
+    border: 1px solid var(--border);
+
+    transition: 0.2s;
+}
+
+.history-item:hover {
+    background: var(--button-hover);
+
+    transform: translateX(3px);
+}
+
+.history-expression {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-bottom: 6px;
+}
+
+.history-result {
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+/* ================================
+   EMPTY HISTORY
+================================ */
+
+.empty-history {
+    min-height: 400px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+.empty-history div {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.empty-history p {
+    color: var(--text);
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+.empty-history span {
+    font-size: 12px;
+}
+
+
+/* ================================
+   TOAST
+================================ */
+
+.toast {
+    position: fixed;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform:
+        translate(-50%, 100px);
+
+    padding: 12px 20px;
+
+    border-radius: 12px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 13px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s;
+}
+
+.toast.show {
+    transform:
+        translate(-50%, 0);
+
+    opacity: 1;
+}
+
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+
+    border-radius: 10px;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 850px) {
+
+    .app {
+        max-width: 500px;
+
+        grid-template-columns: 1fr;
+    }
+
+    .history-panel {
+        min-height: auto;
+    }
+
+    .history-list {
+        max-height: 300px;
+    }
+
+    .empty-history {
+        min-height: 220px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .calculator,
+    .history-panel {
+        border-radius: 22px;
+
+        padding: 18px;
+    }
+
+    .keyboard {
+        gap: 8px;
+    }
+
+    .keyboard button {
+        height: 58px;
+
+        border-radius: 13px;
+    }
+
+    .result {
+        font-size: 35px;
+    }
+}
