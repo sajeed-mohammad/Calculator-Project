@@ -9,7 +9,7 @@ CalcX provides a clean and interactive user interface with essential arithmetic 
 ---
 ## Live Demo
 
-https://sajeed-mohammad.github.io/Calculator-Project-Task-2-CodeAlpha/
+https://sajeed-mohammad.github.io/Calculator-Project-Task-3-CodeAlpha/
 
 ---
 
